@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manajemen Tugas Mahasiswa</title>
+
+  <!-- Font Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📘 Manajemen Tugas Mahasiswa</h1>
+      <p>Kelola semua aktivitas akademikmu dengan mudah dan efisien</p>
+    </header>
+
+    <form id="task-form">
+      <div class="form-group">
+        <input type="text" id="task-name" placeholder="Nama Tugas" required>
+        <input type="text" id="course-name" placeholder="Mata Kuliah" required>
+        <input type="date" id="deadline" required>
+        <button type="submit" class="btn-primary">+ Tambah</button>
+      </div>
+    </form>
+
+    <div class="filter-section">
+      <input type="text" id="search" placeholder="🔍 Cari berdasarkan mata kuliah...">
+      <select id="status-filter">
+        <option value="all">Semua</option>
+        <option value="pending">Belum Selesai</option>
+        <option value="completed">Selesai</option>
+      </select>
+    </div>
+
+    <div class="summary">
+      <h3 id="remaining-tasks">Tugas Belum Selesai: 0</h3>
+    </div>
+
+    <ul id="task-list"></ul>
+  </div>
+
+  <footer>
+    <p>© 2025 Aplikasi Manajemen Tugas Mahasiswa | Dibuat dengan oleh Firman</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
