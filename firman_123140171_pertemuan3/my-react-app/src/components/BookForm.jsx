@@ -1,77 +1,38 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { BookContext } from "../context/BookContext";
 
-const emptyForm = { title: "", author: "", status: "milik" };
+export default function BookForm() {
+  const { addBook } = useContext(BookContext);
 
-export default function BookForm({ editBook, onDone }) {
-  const { addBook, updateBook } = useContext(BookContext);
-  const [form, setForm] = useState(emptyForm);
-  const [errors, setErrors] = useState({});
+  const [judul, setJudul] = useState("");
+  const [penulis, setPenulis] = useState("");
+  const [status, setStatus] = useState("Dimiliki");
 
-  useEffect(() => {
-    if (editBook) setForm(editBook);
-  }, [editBook]);
+  const handleSubmit = () => {
+    if (!judul.trim() || !penulis.trim()) return;
 
-  function validate() {
-    const err = {};
-    if (!form.title.trim()) err.title = "Judul wajib diisi";
-    if (!form.author.trim()) err.author = "Penulis wajib diisi";
-    return err;
-  }
+    addBook({ judul, penulis, status });
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const err = validate();
-    setErrors(err);
-    if (Object.keys(err).length) return;
-
-    if (editBook) {
-      updateBook(editBook.id, form);
-      onDone && onDone();
-    } else {
-      addBook(form);
-      setForm(emptyForm);
-    }
-  }
+    setJudul("");
+    setPenulis("");
+    setStatus("Dimiliki");
+  };
 
   return (
-    <form onSubmit={handleSubmit} className="book-form">
-      <div>
-        <label>Judul</label>
-        <input
-          value={form.title}
-          onChange={(e) => setForm({ ...form, title: e.target.value })}
-        />
-        {errors.title && <small className="error">{errors.title}</small>}
-      </div>
+    <>
+      <h3>Tambah Buku</h3>
 
-      <div>
-        <label>Penulis</label>
-        <input
-          value={form.author}
-          onChange={(e) => setForm({ ...form, author: e.target.value })}
-        />
-        {errors.author && <small className="error">{errors.author}</small>}
-      </div>
+      <input placeholder="Judul buku" value={judul} onChange={(e) => setJudul(e.target.value)} />
 
-      <div>
-        <label>Status</label>
-        <select
-          value={form.status}
-          onChange={(e) => setForm({ ...form, status: e.target.value })}
-        >
-          <option value="milik">Milik</option>
-          <option value="baca">Sedang dibaca</option>
-          <option value="beli">Ingin dibeli</option>
-        </select>
-      </div>
+      <input placeholder="Penulis" value={penulis} onChange={(e) => setPenulis(e.target.value)} />
 
-      <button type="submit">{editBook ? "Simpan Perubahan" : "Tambah Buku"}</button>
-      {editBook && (
-        <button type="button" onClick={onDone}>
-          Batal
-        </button>
-      )}
-    </form>
+      <select value={status} onChange={(e) => setStatus(e.target.value)}>
+        <option>Dimiliki</option>
+        <option>Dipinjam</option>
+        <option>Wishlist</option>
+      </select>
+
+      <button className="button-cyber" onClick={handleSubmit}>Simpan</button>
+    </>
   );
 }

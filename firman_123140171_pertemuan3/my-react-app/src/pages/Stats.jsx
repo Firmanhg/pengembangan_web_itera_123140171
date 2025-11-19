@@ -1,23 +1,22 @@
 import React, { useContext } from "react";
 import { BookContext } from "../context/BookContext";
-import useBookStats from "../hooks/useBookStats";
 
 export default function Stats() {
   const { books } = useContext(BookContext);
-  const stats = useBookStats(books);
+
+  const total = books.length;
+  const dimiliki = books.filter(b => b.status === "Dimiliki").length;
+  const dipinjam = books.filter(b => b.status === "Dipinjam").length;
+  const wishlist = books.filter(b => b.status === "Wishlist").length;
 
   return (
-    <div>
-      <h2>Statistik Buku</h2>
-      <p>Total buku: {stats.total}</p>
+    <div className="card">
+      <h2>STATISTIK BUKU</h2>
 
-      <ul>
-        {Object.entries(stats.byStatus).map(([st, jumlah]) => (
-          <li key={st}>
-            {st} : {jumlah}
-          </li>
-        ))}
-      </ul>
+      <p>Total Buku: <b>{total}</b></p>
+      <p>Buku Dimiliki: <b>{dimiliki}</b></p>
+      <p>Buku Dipinjam: <b>{dipinjam}</b></p>
+      <p>Wishlist: <b>{wishlist}</b></p>
     </div>
   );
 }

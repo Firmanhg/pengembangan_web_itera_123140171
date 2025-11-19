@@ -1,38 +1,53 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import { BookContext } from "../context/BookContext";
-import BookForm from "./BookForm";
 
-export default function BookList({ filter }) {
-  const { books, removeBook } = useContext(BookContext);
-  const [editing, setEditing] = useState(null);
+export default function BookList() {
+  const { books, setBooks, filter, search } = useContext(BookContext);
 
-  const filtered = books.filter((b) =>
-    filter === "all" ? true : b.status === filter
-  );
-
-  if (!filtered.length) return <p>Tidak ada buku.</p>;
+  const filtered = books
+    .filter((b) => (filter === "all" ? true : b.status === filter))
+    .filter((b) => b.title.toLowerCase().includes(search.toLowerCase()));
 
   return (
-    <div>
-      {filtered.map((book) => (
-        <div key={book.id} className="book-item">
-          <div>
-            <strong>{book.title}</strong> — <em>{book.author}</em>
-            <div>Status: {book.status}</div>
-          </div>
+    <div className="neo-card">
+      <h3>Daftar Buku</h3>
 
-          <div className="actions">
-            <button onClick={() => setEditing(book)}>Edit</button>
-            <button onClick={() => removeBook(book.id)}>Hapus</button>
-          </div>
+      <table className="neo-table">
+        <thead>
+          <tr>
+            <th>Judul</th>
+            <th>Penulis</th>
+            <th>Status</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
 
-          {editing && editing.id === book.id && (
-            <div className="edit-box">
-              <BookForm editBook={editing} onDone={() => setEditing(null)} />
-            </div>
+        <tbody>
+          {filtered.map((b) => (
+            <tr key={b.id}>
+              <td>{b.title}</td>
+              <td>{b.author}</td>
+              <td>{b.status}</td>
+              <td>
+                <button
+                  className="btn-del"
+                  onClick={() => setBooks(books.filter((x) => x.id !== b.id))}
+                >
+                  Hapus
+                </button>
+              </td>
+            </tr>
+          ))}
+
+          {filtered.length === 0 && (
+            <tr>
+              <td colSpan="4" className="empty">
+                Tidak ada data
+              </td>
+            </tr>
           )}
-        </div>
-      ))}
+        </tbody>
+      </table>
     </div>
   );
 }

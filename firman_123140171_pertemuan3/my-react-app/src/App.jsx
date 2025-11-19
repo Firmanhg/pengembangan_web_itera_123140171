@@ -1,24 +1,35 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import "./App.css";
+
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Home from "./pages/Home";
 import Stats from "./pages/Stats";
 
-export default function App() {
+function App() {
   return (
-    <div className="app">
-      <header className="header">
-        <h1>Book Manager</h1>
-        <nav>
-          <Link to="/">Home</Link> | <Link to="/stats">Stats</Link>
-        </nav>
-      </header>
+    <Router>
+      <div className="cyber-grid"></div>
 
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/stats" element={<Stats />} />
-        </Routes>
-      </main>
-    </div>
+      <div className="app-container">
+        <Sidebar />
+
+        <div className="main-content">
+          <Header />
+
+          <div className="page-transition-container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/stats" element={<Stats />} />
+            </Routes>
+          </div>
+        </div>
+      </div>
+    </Router>
   );
 }
+
+export default App;
