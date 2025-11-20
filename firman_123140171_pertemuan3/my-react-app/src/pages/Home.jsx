@@ -1,17 +1,13 @@
-import React from "react";
 import BookForm from "../components/BookForm";
-import BookTable from "../components/BookTable";
+import BookFilter from "../components/BookFilter";
+import BookList from "../components/BookList";
 
 export default function Home() {
   return (
-    <>
-      <div className="card">
-        <BookForm />
-      </div>
-
-      <div className="card">
-        <BookTable />
-      </div>
-    </>
+    <div>
+      <BookForm />
+      <BookFilter />
+      <BookList />
+    </div>
   );
 }

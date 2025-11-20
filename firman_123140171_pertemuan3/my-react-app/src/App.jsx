@@ -1,33 +1,44 @@
-import React from "react";
-import "./App.css";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import Home from "./pages/Home";
 import Stats from "./pages/Stats";
+import "./App.css";
 
 function App() {
   return (
     <Router>
-      <div className="cyber-grid"></div>
+      {}
+      <div className="intro-beam"></div>
 
-      <div className="app-container">
-        <Sidebar />
+      <div className="app-root">
+        
+        {}
+        <aside className="cp-sidebar">
+          <Sidebar />
+        </aside>
 
-        <div className="main-content">
-          <Header />
+        {}
+        <div className="workspace">
+          
+          {}
+          <header className="cp-header">
+            <Header />
+          </header>
 
-          <div className="page-transition-container">
+          {}
+          <main>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/stats" element={<Stats />} />
             </Routes>
-          </div>
+          </main>
+
         </div>
       </div>
+
+      {}
+      <div id="cursor-follower"></div>
     </Router>
   );
 }

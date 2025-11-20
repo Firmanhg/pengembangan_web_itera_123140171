@@ -1,38 +1,63 @@
-import React, { useContext, useState } from "react";
+import { useState, useContext } from "react";
 import { BookContext } from "../context/BookContext";
+import DraggableWindow from "./DraggableWindow";
 
 export default function BookForm() {
-  const { addBook } = useContext(BookContext);
+  const { books, setBooks } = useContext(BookContext);
 
-  const [judul, setJudul] = useState("");
-  const [penulis, setPenulis] = useState("");
-  const [status, setStatus] = useState("Dimiliki");
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [status, setStatus] = useState("owned");
 
-  const handleSubmit = () => {
-    if (!judul.trim() || !penulis.trim()) return;
+  const [showPopup, setShowPopup] = useState(false);
 
-    addBook({ judul, penulis, status });
+  function saveBook(e) {
+    e.preventDefault();
+    if (!title.trim()) return;
 
-    setJudul("");
-    setPenulis("");
-    setStatus("Dimiliki");
-  };
+    const newBook = {
+      id: Date.now(),
+      title,
+      author,
+      status,
+    };
+
+    setBooks([...books, newBook]);
+    setTitle("");
+    setAuthor("");
+    setStatus("owned");
+
+    setShowPopup(true);
+    setTimeout(() => setShowPopup(false), 1300);
+  }
 
   return (
-    <>
-      <h3>Tambah Buku</h3>
+    <div className="card">
+      <h3 className="card-title">Tambah Buku</h3>
 
-      <input placeholder="Judul buku" value={judul} onChange={(e) => setJudul(e.target.value)} />
+      <form onSubmit={saveBook}>
+        <input 
+          placeholder="Judul Buku"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
 
-      <input placeholder="Penulis" value={penulis} onChange={(e) => setPenulis(e.target.value)} />
+        <input 
+          placeholder="Penulis"
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+        />
 
-      <select value={status} onChange={(e) => setStatus(e.target.value)}>
-        <option>Dimiliki</option>
-        <option>Dipinjam</option>
-        <option>Wishlist</option>
-      </select>
+        <select value={status} onChange={(e) => setStatus(e.target.value)}>
+          <option value="owned">Dimiliki</option>
+          <option value="reading">Sedang Dibaca</option>
+          <option value="wishlist">Wishlist</option>
+        </select>
 
-      <button className="button-cyber" onClick={handleSubmit}>Simpan</button>
-    </>
+        <button className="button-cyber">Simpan</button>
+      </form>
+
+      {showPopup && <DraggableWindow message="Buku berhasil disimpan!" />}
+    </div>
   );
 }

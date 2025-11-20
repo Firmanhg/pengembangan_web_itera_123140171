@@ -1,36 +1,46 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { BookContext } from "../context/BookContext";
 
-export default function BookTable() {
-  const { books } = useContext(BookContext);
+export default function BookTable({ rows }) {
+  const { books, setBooks } = useContext(BookContext);
+
+  function remove(id) {
+    setBooks(books.filter((b) => b.id !== id));
+  }
 
   return (
-    <>
-      <h3>Daftar Buku</h3>
+    <table className="cp-table">
+      <thead>
+        <tr>
+          <th>Judul</th>
+          <th>Penulis</th>
+          <th>Status</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
 
-      <table>
-        <thead>
+      <tbody>
+        {rows.length === 0 && (
           <tr>
-            <th>Judul</th>
-            <th>Penulis</th>
-            <th>Status</th>
+            <td colSpan={4} style={{ textAlign: "center", padding: "15px" }}>
+              Tidak ada data
+            </td>
           </tr>
-        </thead>
+        )}
 
-        <tbody>
-          {books.length === 0 ? (
-            <tr><td colSpan="3">Tidak ada data</td></tr>
-          ) : (
-            books.map((b, i) => (
-              <tr key={i}>
-                <td>{b.judul}</td>
-                <td>{b.penulis}</td>
-                <td>{b.status}</td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
-    </>
+        {rows.map((b) => (
+          <tr key={b.id}>
+            <td>{b.title}</td>
+            <td>{b.author}</td>
+            <td>{b.status}</td>
+            <td>
+              <button className="mini-btn" onClick={() => remove(b.id)}>
+                hapus
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }

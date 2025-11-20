@@ -1,3 +1,9 @@
+import "../App.css";
+
 export default function Header() {
-  return <div className="header">Cyberpunk Book Manager</div>;
+  return (
+    <div className="cp-title">
+      Firman's Book Manager
+    </div>
+  );
 }

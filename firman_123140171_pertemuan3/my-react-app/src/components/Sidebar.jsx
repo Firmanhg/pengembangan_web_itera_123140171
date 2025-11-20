@@ -1,22 +1,28 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "../App.css";
 
 export default function Sidebar() {
-  const [collapse, setCollapse] = useState(false);
-
   return (
-    <div className={`sidebar ${collapse ? "collapsed" : ""}`}>
-      <button
-        className="sidebar-toggle"
-        onClick={() => setCollapse(!collapse)}
+    <div>
+      <h2 className="nav-label">MENU</h2>
+
+      <NavLink 
+        to="/" 
+        className={({ isActive }) => 
+          "nav-link" + (isActive ? " active" : "")
+        }
       >
-        {collapse ? ">>" : "<< Collapse"}
-      </button>
+        Buku
+      </NavLink>
 
-      {!collapse && <h2>MENU</h2>}
-
-      <Link to="/">Buku</Link>
-      <Link to="/stats">Statistik</Link>
+      <NavLink 
+        to="/stats" 
+        className={({ isActive }) => 
+          "nav-link" + (isActive ? " active" : "")
+        }
+      >
+        Statistik
+      </NavLink>
     </div>
   );
 }
