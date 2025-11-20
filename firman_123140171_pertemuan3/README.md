@@ -19,26 +19,33 @@ Aplikasi ini dibuat menggunakan:
 
 * Input Judul, Penulis, Status (Dimiliki / Dipinjam)
 * Tombol neon “Simpan” dengan efek glow
+<img width="1600" height="808" alt="image" src="https://github.com/user-attachments/assets/ed5bd925-bbf5-475e-a533-b169a3bfe1a5" />
+
 
 ### 2. **Daftar Buku**
 
 * Tabel cyberpunk dengan warna teal neon
 * Tombol “Hapus” bercahaya
 * Efek hover ala UI futuristic
+<img width="1550" height="711" alt="image" src="https://github.com/user-attachments/assets/d531e945-78b0-439b-9ab5-31e3d551a882" />
+
 
 ### 3. **Sidebar Cyberpunk**
 
 * Tema neon
 * Mode collapse
 * Animasi glowing cyan
+<img width="1600" height="809" alt="image" src="https://github.com/user-attachments/assets/7f27d6cc-f91b-4584-a2d6-725cbce5b32c" />
+
 
 ### 4. **Router Halaman**
 
 * `/` → Halaman Buku
 * `/stats` → Statistik Buku
+<img width="1600" height="812" alt="image" src="https://github.com/user-attachments/assets/73e639ab-9297-40dc-a38d-cdfbfacaa199" />
 
-### 5. **Cyberpunk Enhancements Level 4**
 
+### 5. **Cyberpunk Fitur**
 * Neon Intro Beam
 * Neon Grid Background
 * Glitch Title Animation
@@ -90,7 +97,7 @@ src/
 ### Clone repository
 
 ```
-git clone https://github.com/username/cyberpunk-book-manager.git
+git clone https://github.com/Firmanhg/pengembangan_web_itera_123140171.git
 cd cyberpunk-book-manager
 ```
 
@@ -149,21 +156,19 @@ public/screenshot-stats.png
 
 ---
 
-## **Kontribusi**
-
-Pull request sangat diterima!
-Silakan buat branch, lakukan improvement, dan open PR.
-
----
-
-## **Lisensi**
-
-MIT License – bebas digunakan, dimodifikasi, dan dikembangkan.
-
----
-
 ## **Tentang Project**
 
 Cyberpunk Book Manager dibuat untuk memberikan pengalaman UI futuristik ala game **CYBERPUNK 2077**, namun dengan kesederhanaan struktur coding React yang mudah dipelajari.
 
 ---
+<img width="1600" height="809" alt="image" src="https://github.com/user-attachments/assets/30e61cc2-795e-4afe-a036-53415dd92188" />
+<img width="1600" height="812" alt="image" src="https://github.com/user-attachments/assets/ed8ee5c6-91e4-4a14-b2df-53340fcae2fc" />
+<img width="1600" height="809" alt="image" src="https://github.com/user-attachments/assets/02ccd5dc-2ada-424d-b232-627b53f8b050" />
+<img width="1600" height="809" alt="image" src="https://github.com/user-attachments/assets/2c942488-309c-4453-bc56-ea6adc217fa7" />
+<img width="1600" height="808" alt="image" src="https://github.com/user-attachments/assets/efabe7c2-d2b8-4541-b295-4a6183b261c1" />
+<img width="1550" height="711" alt="image" src="https://github.com/user-attachments/assets/b691bc55-fc99-46a3-ba4c-399e23fadecb" />
+<img width="1523" height="571" alt="image" src="https://github.com/user-attachments/assets/4f5eb3bb-c0f1-4456-86fb-eb2ab07e56f8" />
+<img width="1543" height="578" alt="image" src="https://github.com/user-attachments/assets/3f9e752b-707a-489e-9e38-2d554da79dc5" />
+<img width="1520" height="566" alt="image" src="https://github.com/user-attachments/assets/dfc20d28-71e3-4804-acf6-6640b1e07f7e" />
+<img width="1511" height="308" alt="image" src="https://github.com/user-attachments/assets/c22dbf79-3463-48ca-99c5-a25ac56a7d3b" />
+
