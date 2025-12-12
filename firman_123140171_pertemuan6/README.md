@@ -193,4 +193,5 @@ listen = localhost:6544
 * **Nama:** Firman H Gultom
 * **NIM:** 123140171
 * **Kelas:** Pertemuan 6
-* **Repository Asli (Referensi):** [https://github.com/ElfaNovianaa/pemrograman_web_itera_123140066](https://github.com/Firmanhg/pemrograman_web_itera_123140171)
+* **Repository Asli (Referensi):** [https://github.com/Firmanhg/pemrograman_web_itera_123140171](https://github.com/Firmanhg/pemrograman_web_itera_123140171)
+
